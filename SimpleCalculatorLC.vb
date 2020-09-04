@@ -11,18 +11,20 @@ Module SimpleCalculatorLC
 
     Sub Main()
         Dim firstInput, secondInput, userResponse As String
-        Dim firstNumber, secondNumber As Integer
+        Dim firstNumber, secondNumber As Double
         Dim goodData As Boolean
         Do
             Console.WriteLine("Enter q at any time to quit." & vbNewLine)
             Do
                 Try
+                    'try catch looks for errors. goodData is a flag that is used to tell the do to loop until goodData is true.
+                    'loops back if there is a catch because goodData = false.
                     Console.WriteLine("Give me a number")
                     firstInput = Console.ReadLine()
-                    firstNumber = CInt(firstInput)
+                    firstNumber = CDbl(firstInput)
                     Console.WriteLine("Give me another number")
                     secondInput = Console.ReadLine()
-                    secondNumber = CInt(secondInput)
+                    secondNumber = CDbl(secondInput)
                     goodData = True
                 Catch ex As Exception
                     If firstInput = "q" Or secondInput = "q" Then
@@ -35,6 +37,7 @@ Module SimpleCalculatorLC
             Loop Until goodData = True
 
             Do
+                'computation loop.
                 Console.WriteLine("add or multiply?")
                 userResponse = Console.ReadLine()
                 If userResponse = "q" Then
@@ -56,7 +59,7 @@ Module SimpleCalculatorLC
             Console.Clear()
 
         Loop
-
+        'loops until q is entered, so that calculator can be looped continuously.
     End Sub
 
 End Module
